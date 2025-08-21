@@ -138,5 +138,3 @@ A brain dump of ideas, features, and improvements. Not all will be implemented, 
 - **💭 Random** - Ideas that might never happen (but fun to think about)
 
 ---
-
-*Remember: Ideas are cheap, execution is everything. Focus on building what users actually need, not just what seems cool.*
