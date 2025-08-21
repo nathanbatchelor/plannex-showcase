@@ -1,13 +1,21 @@
 # Group Planner 📅
 
-A full-stack group coordination platform that helps friends, families, and teams plan activities by combining personal availability, group calendars, and event planning tools.
+A **full-stack group coordination platform** built with Spring Boot and Next.js, featuring real-time availability tracking, smart group management, and seamless event planning.
 
-## 🌟 Overview
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
 
-Group Planner makes it easy to coordinate with your people - whether you're planning spontaneous hangouts or organizing big events. The platform combines personal availability tracking, group calendars, and event management in one seamless experience.
+> ⚠️ This is a **portfolio showcase repo**. Code is **not fully public** and currently in **MVP development**. Reach out for access or walkthroughs.
 
-### Current Status: MVP Development Phase
-This showcase demonstrates the core functionality of the platform, including user management, group coordination, availability tracking, and basic event planning.
+## 🔥 Project Overview
+
+This system streamlines group coordination by combining **personal availability tracking**, **smart group management**, and **intuitive event planning**. The platform makes it effortless to see when your group is free, plan events, and coordinate activities - whether it's spontaneous hangouts or major celebrations.
+
+**Portfolio Project Note:** *Currently in MVP development phase - This showcase demonstrates core full-stack development capabilities including RESTful API design, React state management, real-time data synchronization, and responsive UI design.*
 
 ## 🚀 Features Implemented (MVP)
 
@@ -65,72 +73,41 @@ src/
 └── lib/              # Utility functions
 ```
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack & Architecture
 
-### Backend
-- **Java 21** with Spring Boot 3.5.4
-- **PostgreSQL** for data persistence
-- **Spring Data JPA** for database operations
-- **Maven** for dependency management
-- **OpenAPI/Swagger** for API documentation
+### **Backend Excellence**
+- **Spring Boot 3.5.4** with Java 21 for robust server-side architecture
+- **PostgreSQL** with JPA/Hibernate for reliable data persistence
+- **RESTful API Design** with comprehensive error handling and validation
+- **Maven** for dependency management and build automation
 
-### Frontend
-- **Next.js 15** with App Router
-- **React 19** with TypeScript
-- **Tailwind CSS** for styling
-- **Axios** for API communication
-- **Lucide React** for icons
+### **Frontend Innovation**  
+- **Next.js 15** with App Router for modern React development
+- **TypeScript** for type-safe development and better maintainability
+- **Tailwind CSS** for responsive, utility-first styling
+- **React Context** for sophisticated state management
+
+### **Key Technical Features**
+- **Clean Architecture** - Proper separation of concerns across all layers
+- **Type Safety** - Full TypeScript coverage from API to UI components  
+- **Real-time Sync** - Seamless data flow between frontend and backend
+- **Responsive Design** - Mobile-first approach with modern UX patterns
 
 ## 🚦 Getting Started
 
-### Prerequisites
-- Java 21+
-- Node.js 18+
-- PostgreSQL 12+
-- Maven 3.6+
+**Note:** This is a portfolio showcase repository. The full source code is available upon request for qualified opportunities.
 
-### Backend Setup
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd group-planner/backend
-   ```
+### Live Demo
+- **Frontend Preview**: [Coming Soon]
+- **API Documentation**: Available at `/swagger-ui.html` when running locally
 
-2. **Configure Database**
-   ```properties
-   # src/main/resources/application.properties
-   spring.datasource.url=jdbc:postgresql://localhost:5432/groupplanner
-   spring.datasource.username=your_username
-   spring.datasource.password=your_password
-   ```
-
-3. **Run the Application**
-   ```bash
-   mvn spring-boot:run
-   ```
-   
-   The API will be available at `http://localhost:8080`
-   Swagger UI: `http://localhost:8080/swagger-ui.html`
-
-### Frontend Setup
-1. **Install Dependencies**
-   ```bash
-   cd group-planner/frontend
-   npm install
-   ```
-
-2. **Configure Environment**
-   ```bash
-   # .env.local
-   NEXT_PUBLIC_API_URL=http://localhost:8080/api/v1
-   ```
-
-3. **Run Development Server**
-   ```bash
-   npm run dev
-   ```
-   
-   The application will be available at `http://localhost:3001`
+### For Recruiters/Interviewers
+If you'd like to see the full implementation or discuss the technical details, please feel free to reach out. I'd be happy to walk through:
+- Architecture decisions and trade-offs
+- Code structure and organization  
+- Database design and relationships
+- Frontend state management patterns
+- API design principles
 
 ## 📋 API Endpoints
 
@@ -177,18 +154,21 @@ Availability:
 - [ ] Advanced payment splitting
 - [ ] Custom group nicknames and social personas
 
-## 🧪 Testing
+## 🧪 Current Development Status
 
-### Backend Testing
-```bash
-mvn test
-```
+**MVP Phase Complete Features:**
+- ✅ User authentication and profile management
+- ✅ Group creation and member management  
+- ✅ Real-time availability calendar
+- ✅ Basic event planning and coordination
+- ✅ Responsive UI with modern design
+- ✅ RESTful API with comprehensive error handling
 
-### Frontend Testing
-```bash
-npm run test  # When tests are added
-npm run lint  # ESLint checks
-```
+**Coming in Phase 2:**
+- 🔄 Enhanced event planning suite
+- 🔄 Spontaneous "ping" events
+- 🔄 In-app messaging system
+- 🔄 Photo sharing capabilities
 
 ## 📊 Key Design Decisions
 
@@ -231,12 +211,9 @@ Frontend Components → Context Providers → API Layer → Backend Controllers 
 - Separation of concerns
 - Error handling throughout the stack
 
-## 🔗 Links
+## 📝 License
 
-- **Live Demo**: Coming Soon
-- **API Documentation**: Available at `/swagger-ui.html` when running locally
-- **Project Repository**: [GitHub Link]
-
+This project is not open source. Codebase available upon request.
 ---
 
 **Built with ❤️ using Spring Boot & Next.js**
