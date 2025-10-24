@@ -7,183 +7,102 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
-> ⚠️ **Portfolio Showcase:** This repository demonstrates the architecture, documentation, and feature set of the Plannex platform. The full source code is private but is available upon request for review.
+> ⚠️ **Portfolio Showcase:** Demonstrates the architecture, documentation, and features of Plannex. Full source code is private but available upon request.
 
 ---
 
 ## 🚀 Live Demo
 
-* **Frontend Application:** [https://plannex.vercel.app](url)
-* **Backend API Documentation:** Available via Swagger UI (running on the live backend)
+* **Frontend:** [https://plannex.vercel.app](url)
+* **API Docs:** Available via Swagger UI on the live backend.
 
 ---
 
 ## 🔥 Project Overview
 
-Plannex is a full-stack group coordination platform designed to solve the simple but universal problem of "When is everyone free?". It streamlines social planning by combining **personal availability tracking**, **smart group management**, and **intuitive event planning** into one seamless application.
+Plannex is a full-stack group coordination platform solving the common challenge: "When is everyone free?". It simplifies social planning through **personal availability tracking**, **group management**, and **intuitive event scheduling**.
 
-Users can mark their unavailable dates on a personal calendar. This data is then aggregated within their groups, allowing any member to instantly see "availability gaps" and find the perfect time to schedule an event.
-
-The system is built on a modern, decoupled architecture with a **Spring Boot 3.5.6 (Java 24)** backend API and a **Next.js 15 (TypeScript)** frontend.
+Users mark unavailable dates on a personal calendar, which aggregates within groups to instantly show shared availability, enabling easy scheduling of spontaneous "Ping" events or planned activities. Built with Spring Boot 3.5.6 (Java 24) and Next.js 15 (TypeScript).
 
 ### Core Problem Solved:
 
-Instead of polling multiple people in a group chat, a user can simply:
+Eliminates group chat polling. Users can:
 1.  Create a group (e.g., "Weekend Hiking").
-2.  Invite friends via a unique, secure link.
-3.  Instantly see a visual overlay of *all members'* unavailable dates.
-4.  Create a "Ping" event for a spontaneous hangout, inviting only those who are marked as "available" today.
-5.  Chat with accepted participants in real-time event threads.
+2.  Invite friends via secure link.
+3.  View aggregated member unavailability.
+4.  Create "Ping" events, auto-inviting *only* available members.
+5.  Chat in real-time within event threads.
 
 ---
 
 ## Core Concepts Demonstrated
 
-This project serves as a practical demonstration of modern full-stack development principles:
+This project showcases modern full-stack development skills:
 
-### **Backend Excellence:**
-* **RESTful API Design:** Clean, resource-oriented API with comprehensive DTOs (`/api/v1/...`).
-* **Security Architecture:** 
-    - JWT-based authentication with secure `httpOnly` refresh token cookies
-    - Role-based authorization using Spring Security 6
-    - Custom `@PreAuthorize` expressions with dedicated `SecurityService`
-    - Protection against common vulnerabilities (XSS, CSRF)
-* **Data Persistence:** 
-    - JPA/Hibernate ORM with optimized queries
-    - Custom `@EntityGraph` definitions for N+1 problem prevention
-    - Efficient many-to-many relationship management
-    - PostgreSQL with proper indexing strategy
-* **Architecture:** 
-    - Clean, layered architecture (Controller → Service → Repository)
-    - DTO pattern for API contract separation
-    - Global exception handling with consistent error responses
-    - Comprehensive Jakarta Bean Validation
-* **Testing Strategy:**
-    - **Unit Tests** - Mockito for service layer logic isolation
-    - **Integration Tests** - `@DataJpaTest` for repository validation
-    - **Controller Tests** - `@SpringBootTest` with MockMvc for full API testing
-    - **Custom Test Utilities** - `@WithMockCustomUser` for security context testing
-    - **95%+ code coverage** across critical business logic
+### **Backend (Spring Boot):**
+* **API Design:** Clean RESTful API (`/api/v1/...`) with DTOs.
+* **Security:** JWT auth (Access/Refresh tokens, `httpOnly` cookie), Spring Security 6, role-based auth, `@PreAuthorize` with custom `SecurityService`.
+* **Data Persistence:** JPA/Hibernate, PostgreSQL, `@EntityGraph` for N+1 prevention, efficient relationship management.
+* **Architecture:** Layered (Controller/Service/Repository), global exception handling, Jakarta Bean Validation.
+* **Testing:** Comprehensive suite (Unit/Integration/Controller) using Mockito, `@DataJpaTest`, `@SpringBootTest`, MockMvc, custom `@WithMockCustomUser`. **~95% coverage**.
 
-### **Frontend Excellence:**
-* **Modern React:** Built with Next.js 15 App Router and React Server Components.
-* **Type Safety:** 100% TypeScript coverage, from API client functions to UI components.
-* **State Management:** Centralized, domain-driven state using React Context (for Auth, Groups, Availability, Events), minimizing prop-drilling.
-* **UI/UX:** Responsive, mobile-first design using Tailwind CSS with consistent design system.
-* **API Integration:** Robust async data fetching with a dedicated API client layer and proper error handling.
+### **Frontend (Next.js):**
+* **Modern React:** Next.js 15 App Router, React Server Components.
+* **Type Safety:** 100% TypeScript coverage.
+* **State Management:** Centralized React Context (Auth, Groups, Availability, Events).
+* **UI/UX:** Responsive, mobile-first design with Tailwind CSS.
+* **API Integration:** Robust async data fetching (Axios) with error handling.
 
 ### **DevOps & Tooling:**
-* **Containerization:** Fully containerized backend with `Dockerfile` and `docker-compose` for consistent development environments.
-* **CI/CD:** Automated build and test pipeline using GitHub Actions.
-* **Database Management:** Docker Compose setup for PostgreSQL with proper volume management.
-* **Documentation:** Comprehensive API documentation via Swagger/OpenAPI.
+* **Containerization:** `Dockerfile` & `docker-compose` for backend & DB.
+* **CI/CD:** Automated build/test pipeline via GitHub Actions.
+* **Documentation:** API docs via Swagger/OpenAPI.
 
 ---
 
-## 🚀 Features Implemented (Current Version)
+## 🚀 Features Implemented
 
 ### 👤 **User Management**
-* Secure user registration with BCrypt password hashing
-* JWT-based authentication with dual-token system:
-    - Short-lived access tokens for API requests
-    - Long-lived refresh tokens stored in `httpOnly` cookies
-* Automatic token refresh flow
-* Personal profile management (edit username, email, password)
-* Availability calendar management with date validation
+* Secure Registration (BCrypt) & JWT Authentication (Access/Refresh tokens, `httpOnly` cookie).
+* Automatic token refresh flow.
+* Profile editing (username, email, password).
+* Personal availability calendar management.
 
 ### 👥 **Group Coordination**
-* Create, view, and manage groups with proper ownership tracking
-* Secure, UUID-based group invitation system with expiration
-* Role-based permissions (creator vs. member)
-* Member management with join/leave functionality
-* Creator-specific protections (cannot leave own group)
-* Real-time member availability aggregation
+* Group creation/management with ownership.
+* Secure, expiring UUID-based invitation links.
+* Role-based permissions (creator vs. member).
+* Join/Leave functionality (creator cannot leave).
+* Aggregated member availability view.
 
 ### 📅 **Availability System**
-* Personal availability calendar with date range selection
-* Business logic validation:
-    - Prevents setting availability for past dates
-    - Limits on maximum unavailable dates (365 day cap)
-    - Date format validation
-* Group-level availability view showing aggregated member unavailability
-* Efficient backend aggregation using JPA queries
-* Smart filtering for "Ping" event invitations
+* Mark personal unavailability (with date validation: no past dates, 365-day limit, format check).
+* Group-level availability overlay.
+* Efficient backend aggregation via JPA.
 
 ### 🎉 **Event Planning (Ping Events)**
-* Create time-limited "Ping" events within groups for spontaneous hangouts
-* **Smart Invitation System:**
-    - Automatically filters and invites *only* available members
-    - Option to include/exclude unavailable members
-    - Initiator automatically marked as "accepted"
-* **RSVP Management:**
-    - Accept/Decline functionality with validation
-    - Prevents RSVP changes after event expiration
-    - Real-time acceptance count tracking
-* **Event Status Logic:**
-    - `AWAITING` - Event is active and accepting responses
-    - `COMPLETED` - Event expired with ≥2 accepted members
-    - `EXPIRED` - Event expired with <2 accepted members
-* **Event Messaging:**
-    - Real-time chat/message board per event
-    - Only accepted members can send messages
-    - Message history with timestamp filtering
-    - Efficient polling for new messages
+* Create time-limited "Ping" events for spontaneous hangouts.
+* **Smart Invites:** Auto-invite only available members (optional override). Initiator auto-accepted.
+* **RSVP:** Accept/Decline (validation prevents changes after expiration). Real-time count tracking.
+* **Status Logic:** `AWAITING` → `COMPLETED` (≥2 accepted) / `EXPIRED` (<2 accepted).
+* **Messaging:** Real-time event chat (accepted members only), history with timestamp filtering.
 
 ### 🔒 **Security Features**
-* JWT authentication with secure token rotation
-* `@PreAuthorize` method-level security with custom expressions
-* Custom `SecurityService` for reusable authorization checks:
-    - `isGroupMember(groupId, user)` - Verify group membership
-    - `isCreator(groupId, user)` - Verify group ownership
-    - `isMemberOfEventsGroup(eventId, user)` - Verify event access
-    - `isAcceptedEventMember(eventId, user)` - Verify RSVP status
-* Input validation at DTO and service layers
-* Proper error handling with informative HTTP status codes
-* Protection against common attack vectors
+* JWT authentication with secure token rotation.
+* `@PreAuthorize` method security using custom `SecurityService` expressions (`isGroupMember`, `isCreator`, `isMemberOfEventsGroup`, `isAcceptedEventMember`).
+* Input validation (DTOs & Service layer).
+* Consistent HTTP error responses.
 
 ---
 
 ## 🏗️ Architecture
 
-The backend follows a classic **3-layer architecture** (Controller → Service → Repository) with additional separation for security and DTOs. The frontend is built with Next.js 15, utilizing the App Router and React Context for state management.
+Backend uses a **3-layer architecture** (Controller → Service → Repository). Frontend employs Next.js 15 App Router with React Context.
 
-### **Backend Layer Breakdown:**
-
-```
-┌─────────────────────────────────────────┐
-│          Controllers (REST API)         │
-│  - Request handling & validation        │
-│  - DTO mapping                          │
-│  - Security annotations                 │
-└──────────────┬──────────────────────────┘
-               ↓
-┌──────────────────────────────────────────┐
-│            Services (Business Logic)     │
-│  - Authorization checks                  │
-│  - Complex business rules                │
-│  - Transaction management                │
-└──────────────┬───────────────────────────┘
-               ↓
-┌──────────────────────────────────────────┐
-│         Repositories (Data Access)       │
-│  - JPA/Hibernate queries                 │
-│  - Custom @Query methods                 │
-│  - @EntityGraph optimizations            │
-└──────────────┬───────────────────────────┘
-               ↓
-         ┌──────────┐
-         │PostgreSQL│
-         └──────────┘
-```
+*(See [`docs/architecture.md`](docs/architecture.md) for detailed diagrams and data flows.)*
 
 ### **Key Design Patterns:**
-* **DTO Pattern** - Separation between entities and API contracts
-* **Repository Pattern** - Abstraction over data access
-* **Service Layer** - Business logic encapsulation
-* **Security Service** - Centralized authorization logic
-* **Global Exception Handling** - Consistent error responses
-
-*(See the `docs/architecture.md` file for detailed diagrams and data flows.)*
+* DTO Pattern, Repository Pattern, Service Layer, Security Service, Global Exception Handling.
 
 ---
 
@@ -194,147 +113,95 @@ The backend follows a classic **3-layer architecture** (Controller → Service �
 * **Security:** Spring Security 6 with JWT
 * **Data:** Spring Data JPA (Hibernate 6)
 * **Database:** PostgreSQL 16
-* **Auth:** JSON Web Tokens (jjwt 0.11.5)
-* **Testing:** JUnit 5, Mockito 5, H2 (test DB)
+* **Testing:** JUnit 5, Mockito 5, H2
 * **Build:** Maven 3.9
 * **Containerization:** Docker / Docker Compose
-* **Documentation:** SpringDoc OpenAPI 3
+* **Docs:** SpringDoc OpenAPI 3
 
 ### **Frontend (Next.js)**
 * **Framework:** Next.js 15 (App Router)
 * **Language:** TypeScript 5
 * **Styling:** Tailwind CSS 3
-* **State Management:** React Context API
-* **HTTP Client:** Axios
-* **Date Handling:** date-fns
+* **State:** React Context API
+* **HTTP:** Axios
+* **Date:** date-fns
 
 ---
 
 ## 📊 Test Coverage
 
-The project maintains comprehensive test coverage across all layers:
-
-### **Backend Testing:**
-* **Controller Tests** (`@SpringBootTest`, `@AutoConfigureMockMvc`)
-    - Full integration tests with security context
-    - Custom `@WithMockCustomUser` annotation for auth testing
-    - Tests for all endpoints (success + error cases)
-* **Service Tests** (`@ExtendWith(MockitoExtension.class)`)
-    - Unit tests with mocked dependencies
-    - Business logic validation
-    - Edge case handling
-* **Repository Tests** (`@DataJpaTest`)
-    - JPA query validation
-    - Custom query method testing
-    - Entity relationship verification
-* **Exception Handler Tests**
-    - Global error handling validation
-    - Proper HTTP status code verification
-    - Error message consistency
-
-### **Test Statistics:**
-* **Total Test Classes:** 20+
-* **Total Test Methods:** 200+
-* **Coverage:** ~95% of critical business logic
-* **Test Database:** H2 in-memory for fast execution
+* **Comprehensive Layers:** Controller (`@SpringBootTest`), Service (Mockito), Repository (`@DataJpaTest`), Exception Handler tests.
+* **Custom Utilities:** `@WithMockCustomUser` for security context simulation.
+* **Stats:** 20+ Test Classes, 200+ Test Methods, **~95% coverage** of critical logic.
+* **DB:** H2 in-memory for fast test execution.
 
 ---
 
 ## 🔐 Security Implementation
 
-### **Authentication Flow:**
-1. User logs in with email/password
-2. Backend validates credentials against BCrypt hash
-3. Server generates:
-    - Access token (JWT, 15-minute expiration)
-    - Refresh token (JWT, 7-day expiration)
-4. Access token returned in response body
-5. Refresh token set as `httpOnly` cookie (prevents XSS)
-6. Client includes access token in `Authorization: Bearer <token>` header
-7. On access token expiration:
-    - Client calls `/api/v1/auth/refresh`
-    - Backend validates refresh token from cookie
-    - New access token issued
+* **Auth Flow:** Login → Validate (BCrypt) → Issue JWT Access (15min) & Refresh (7day, `httpOnly` cookie) → Client uses Access Token → Refresh via `/auth/refresh` on expiry.
+* **Authorization:** Method-level via `@PreAuthorize("@security...")`.
 
-### **Authorization Pattern:**
 ```java
+// Example Authorization
 @PreAuthorize("@security.isGroupMember(#groupId, principal)")
-public ResponseEntity<GroupInfoDTO> getGroupById(@PathVariable Long groupId) {
-    // Only group members can access this endpoint
-}
-```
+public ResponseEntity<GroupInfoDTO> getGroupById(@PathVariable Long groupId) { /*...*/ }
+````
 
----
+-----
 
 ## 📁 Project Structure
 
 ```
 plannex/
-├── src/main/java/.../plannex/
-│   ├── config/                 # Security, JWT, CORS, Jackson config
-│   ├── controller/             # REST API endpoints
-│   ├── entity/                 # JPA entities
-│   ├── exception/              # Global exception handlers
-│   ├── model/                  # DTOs (Request/Response)
-│   ├── repository/             # Data access layer
-│   └── service/                # Business logic layer
-├── src/test/java/.../plannex/
-│   ├── controllerTests/        # API endpoint tests
-│   ├── serviceTests/           # Business logic tests
-│   ├── repositoryTests/        # Data layer tests
-│   └── exceptionTests/         # Error handling tests
-├── docs/
-│   ├── architecture.md         # System design documentation
-│   ├── decisions.md            # Architectural Decision Records
-│   ├── idea.md                 # Feature backlog
-│   └── progress.md             # Development log
-├── docker-compose.yml          # PostgreSQL container setup
-├── Dockerfile                  # Backend containerization
-└── pom.xml                     # Maven dependencies
+├── src/main/java/.../plannex/ # Main source code (config, controller, entity, etc.)
+├── src/test/java/.../plannex/ # Test code (controllerTests, serviceTests, etc.)
+├── docs/                      # Architecture, Decisions, Ideas, Progress docs
+├── docker-compose.yml         # DB container setup
+├── Dockerfile                 # Backend container build instructions
+└── pom.xml                    # Maven project config
 ```
 
----
+-----
 
 ## 🚦 For Recruiters & Reviewers
 
-This repository is designed to showcase my approach to building a complete, production-ready application. As the source code is private, I encourage you to review the documentation in the `/docs` folder:
+This repository showcases a production-oriented development approach. Review the `/docs` folder for deeper insights:
 
-* **[`docs/architecture.md`](docs/architecture.md):** High-level diagrams and data flow explanations.
-* **[`docs/decisions.md`](docs/decisions.md):** Architectural Decision Records (ADRs) explaining *why* certain technologies were chosen.
-* **[`docs/idea.md`](docs/idea.md):** The product backlog and future roadmap for the platform.
-* **[`docs/progress.md`](docs/progress.md):** A high-level development log.
+  * [`docs/architecture.md`](https://www.google.com/search?q=docs/architecture.md): System design & data flow.
+  * [`docs/decisions.md`](https://www.google.com/search?q=docs/decisions.md): ADRs explaining tech choices.
+  * [`docs/idea.md`](https://www.google.com/search?q=docs/idea.md): Product backlog & roadmap.
+  * [`docs/progress.md`](https://www.google.com/search?q=docs/progress.md): Development log.
 
-### **Key Highlights to Review:**
+### **Key Highlights:**
 
-1. **Security Implementation** - JWT with refresh tokens, method-level authorization
-2. **Test Coverage** - Comprehensive test suite with custom testing utilities
-3. **Database Design** - Efficient JPA relationships with query optimization
-4. **API Design** - Clean REST principles with proper HTTP semantics
-5. **Error Handling** - Consistent, informative error responses
-6. **Code Organization** - Clear separation of concerns, easy to navigate
+1.  **Security:** Robust JWT flow & method-level authorization.
+2.  **Testing:** Extensive coverage & custom test utilities.
+3.  **Database:** Efficient JPA design & query optimization.
+4.  **API:** Clean REST principles & error handling.
+5.  **Code Quality:** Organized, readable, maintainable.
 
-**I am happy to provide access to the private source code and do a full code walkthrough upon request.**
+**Full source code access and code walkthrough available upon request.**
 
----
+-----
 
 ## 🎯 What Makes This Project Stand Out
 
-* **Production-Ready Architecture** - Not just a toy project, built with scalability and maintainability in mind
-* **Comprehensive Testing** - 200+ tests covering edge cases and integration scenarios
-* **Security Best Practices** - Proper JWT implementation, method-level authorization, input validation
-* **Real-World Problem Solving** - Addresses a genuine coordination challenge with smart features
-* **Clean Code** - Consistent naming, proper abstractions, readable and maintainable
-* **Professional Documentation** - Architecture decisions recorded, progress tracked, code well-commented
+  * **Production-Ready:** Scalable architecture, comprehensive testing, security best practices.
+  * **Real-World Solution:** Addresses a common coordination problem effectively.
+  * **Clean Code & Docs:** Demonstrates maintainability and professional practices.
+  * **Modern Tech Stack:** Utilizes current industry standards (Java 24, Spring Boot 3.5, Next.js 15).
 
----
+-----
 
 ## 📞 Contact
 
-For questions, source code access, or to schedule a code walkthrough, please reach out via:
-* **GitHub:** [https://github.com/nathanbatchelor](url)
-* **LinkedIn:** [https://linkedin.com/in/nathanbatchelor](url)
-* **Email:** nathanbatchelor04@gmail.com
+For questions, source code access, or walkthroughs:
 
----
+  * **GitHub:** [https://github.com/nathanbatchelor](https://www.google.com/search?q=url)
+  * **LinkedIn:** [https://linkedin.com/in/nathanbatchelor](https://www.google.com/search?q=url)
+  * **Email:** nathanbatchelor04@gmail.com
+
+-----
 
 *Last Updated: October 2025*
