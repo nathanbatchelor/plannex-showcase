@@ -53,7 +53,7 @@ This system streamlines group coordination by combining **personal availability 
 
 ### Backend (Spring Boot)
 ```
-src/main/java/io/github/nathanbatchelor/groupplanner/
+src/main/java/io/github/nathanbatchelor/plannex/
 ├── controller/          # REST API endpoints
 ├── service/            # Business logic layer
 ├── repository/         # Data access layer
