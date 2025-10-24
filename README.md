@@ -13,7 +13,7 @@
 
 ## 🚀 Live Demo
 
-* **Frontend:** [https://plannex.vercel.app](url)
+* **Frontend:** [https://plannex.vercel.app](https://plannex.vercel.app)
 * **API Docs:** Available via Swagger UI on the live backend.
 
 ---
@@ -99,10 +99,10 @@ This project showcases modern full-stack development skills:
 
 Backend uses a **3-layer architecture** (Controller → Service → Repository). Frontend employs Next.js 15 App Router with React Context.
 
-*(See [`docs/architecture.md`](docs/architecture.md) for detailed diagrams and data flows.)*
-
 ### **Key Design Patterns:**
 * DTO Pattern, Repository Pattern, Service Layer, Security Service, Global Exception Handling.
+
+*(Detailed architecture diagrams and design decisions are documented internally and can be discussed upon request.)*
 
 ---
 
@@ -145,18 +145,19 @@ Backend uses a **3-layer architecture** (Controller → Service → Repository).
 ```java
 // Example Authorization
 @PreAuthorize("@security.isGroupMember(#groupId, principal)")
-public ResponseEntity<GroupInfoDTO> getGroupById(@PathVariable Long groupId) { /*...*/ }
+    public ResponseEntity<GroupInfoDTO> getGroupById(
+            @PathVariable Long groupId,
+            @AuthenticationPrincipal User user) { /*...*/ }
 ````
 
 -----
 
-## 📁 Project Structure
+## 📁 Project Structure (Backend Overview)
 
 ```
 plannex/
 ├── src/main/java/.../plannex/ # Main source code (config, controller, entity, etc.)
 ├── src/test/java/.../plannex/ # Test code (controllerTests, serviceTests, etc.)
-├── docs/                      # Architecture, Decisions, Ideas, Progress docs
 ├── docker-compose.yml         # DB container setup
 ├── Dockerfile                 # Backend container build instructions
 └── pom.xml                    # Maven project config
@@ -166,12 +167,7 @@ plannex/
 
 ## 🚦 For Recruiters & Reviewers
 
-This repository showcases a production-oriented development approach. Review the `/docs` folder for deeper insights:
-
-  * [`docs/architecture.md`](https://www.google.com/search?q=docs/architecture.md): System design & data flow.
-  * [`docs/decisions.md`](https://www.google.com/search?q=docs/decisions.md): ADRs explaining tech choices.
-  * [`docs/idea.md`](https://www.google.com/search?q=docs/idea.md): Product backlog & roadmap.
-  * [`docs/progress.md`](https://www.google.com/search?q=docs/progress.md): Development log.
+This repository provides a high-level overview of the Plannex application.
 
 ### **Key Highlights:**
 
@@ -189,7 +185,7 @@ This repository showcases a production-oriented development approach. Review the
 
   * **Production-Ready:** Scalable architecture, comprehensive testing, security best practices.
   * **Real-World Solution:** Addresses a common coordination problem effectively.
-  * **Clean Code & Docs:** Demonstrates maintainability and professional practices.
+  * **Clean Code & Architecture:** Demonstrates maintainability and professional practices.
   * **Modern Tech Stack:** Utilizes current industry standards (Java 24, Spring Boot 3.5, Next.js 15).
 
 -----
@@ -198,8 +194,8 @@ This repository showcases a production-oriented development approach. Review the
 
 For questions, source code access, or walkthroughs:
 
-  * **GitHub:** [https://github.com/nathanbatchelor](https://www.google.com/search?q=url)
-  * **LinkedIn:** [https://linkedin.com/in/nathanbatchelor](https://www.google.com/search?q=url)
+  * **GitHub:** [https://github.com/nathanbatchelor](https://github.com/nathanbatchelor)
+  * **LinkedIn:** [https://linkedin.com/in/nathanbatchelor](https://linkedin.com/in/nathanbatchelor)
   * **Email:** nathanbatchelor04@gmail.com
 
 -----
